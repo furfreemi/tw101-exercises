@@ -1,6 +1,6 @@
 package com.thoughtworks.tw101.exercises.exercise4;
 
-//Exercise #4: Create a class Library with a method PrintBooksContaining(String partialBookName) that prints out all of
+//Exercise #4: Create a class Library with a method printBooksContaining(String partialBookName) that prints out all of
 // the books in the Library whose title contains the string passed in. You should pass an array of book titles into the
 // Library constructor.
 
