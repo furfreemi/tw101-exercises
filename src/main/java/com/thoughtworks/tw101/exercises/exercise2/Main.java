@@ -5,9 +5,15 @@ package com.thoughtworks.tw101.exercises.exercise2;
 
 public class Main {
     public static void main(String[] args) {
-
+        int calls = 0;
         Accumulator accumulator = new Accumulator();
 
+        while (calls < 5){
+            accumulator.increment();
+            calls++;
+        }
 
+        accumulator.total();
+        
     }
 }
