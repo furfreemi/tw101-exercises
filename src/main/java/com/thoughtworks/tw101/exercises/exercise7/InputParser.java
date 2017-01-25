@@ -18,6 +18,7 @@ public class InputParser {
         if (input.hasNextInt()) {
             return input.nextInt();
         } else {
+            input.next();
             System.out.println("Guesses must be integer values.");
             return getGuess();
         }
