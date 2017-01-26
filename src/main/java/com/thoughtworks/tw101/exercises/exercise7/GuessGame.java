@@ -5,7 +5,13 @@ package com.thoughtworks.tw101.exercises.exercise7;
  */
 public class GuessGame {
 
-    public static boolean checkGuess(RandomNumber rand, int guess){
+    private RandomNumber rand;
+
+    public GuessGame(RandomNumber rand){
+        this.rand = rand;
+    }
+
+    public boolean checkGuess(int guess){
         int result = rand.compareTo(guess);
         if (result == 0) {
             System.out.println("Congrats! The number was " + guess + ".");

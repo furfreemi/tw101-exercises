@@ -10,13 +10,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        RandomNumber rand = new RandomNumber();
+        GuessGame game = new GuessGame(new RandomNumber());
         InputParser readIn = new InputParser(new Scanner(System.in));
-
         boolean guessed = false;
         while (!guessed){
             int guess = readIn.getGuess();
-            guessed = GuessGame.checkGuess(rand, guess);
+            guessed = game.checkGuess(guess);
         }
     }
 }
