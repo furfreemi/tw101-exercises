@@ -12,6 +12,6 @@ public class Main {
             System.out.println(count);
         }
 
-        System.out.println(sum);
+        System.out.println("Sum: " + sum);
     }
 }

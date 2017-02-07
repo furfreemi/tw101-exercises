@@ -2,6 +2,7 @@ package com.thoughtworks.tw101.exercises.exercise5;
 
 public class RectangleAverager {
 
+    // Compute average area of an array of rectangles
     public float averageArea(Rectangle[] rectangles) {
         float areaSum = 0;
 

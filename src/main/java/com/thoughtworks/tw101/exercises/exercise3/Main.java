@@ -5,6 +5,7 @@ public class Main {
 //    Exercise #3: Create a function 'of' in the class OddSum that returns the sum of all odd integers between a starting
 //    and ending integer value.
 
+    // NOTE: designed with inclusive implementation: start and end are included in summation (if odd)
     public static void main(String[] args) {
         OddSum oddSum = new OddSum();
 

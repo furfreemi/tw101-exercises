@@ -2,7 +2,7 @@ package com.thoughtworks.tw101.introductory_programming_exercises;
 
 public class DiamondExercises {
 
-
+// Helper method: draw a line with some amount of left padding spaces followed by a given amount of asterisks
     private static void drawLine(int spaces, int asterisks){
         for (int s = 0; s < spaces; s++){
             System.out.print(' ');
@@ -25,7 +25,7 @@ public class DiamondExercises {
         }
     }
 
-
+// Helper method: shifts triangle lines over one extra space so a different base can be added
     private static void drawAnIsoscelesTriangleWithLeftPad(int n) {
         // spaces per line: n * 2 - 1
         for (int i = 1; i <= n; i++){
@@ -33,7 +33,7 @@ public class DiamondExercises {
         }
     }
 
-
+    // Helper method: draws the bottom of an isosceles triangle (portion following the middle line)
     private static void drawAnInvertedIsoscelesTriangleWithLeftPad(int n){
         for (int i = n; i > 0; i--){
             // as all bottoms require left-side single space padding

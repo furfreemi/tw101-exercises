@@ -11,6 +11,7 @@ public class TriangleExercises {
 //    Easiest exercise ever
 //    Print one asterisk to the console.
 //    Example: *
+    // Note: Designed without new line so as to aid in reuse throughout rest of code
     private static void drawAnAsterisk() {
         System.out.print('*');
     }

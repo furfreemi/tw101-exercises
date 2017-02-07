@@ -11,9 +11,16 @@ package com.thoughtworks.tw101.exercises.exercise6;
 import java.util.ArrayList;
 
 public class Main {
+
+    // Assumed uniform name/hitpoints for all Trolls/Orcs as per instructions so no customization or constructors implemented
     public static void main(String[] args) {
         ArrayList<Monster> monsters = new ArrayList<>();
+        // Add trolls
         monsters.add(new Troll());
+        monsters.add(new Troll());
+
+        // Add orcs
+        monsters.add(new Orc());
         monsters.add(new Orc());
 
         for (Monster monster : monsters){

@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) {
         GuessGame game = new GuessGame(new RandomNumber());
         InputParser readIn = new InputParser(new Scanner(System.in));
-        boolean guessed = false;
-        while (!guessed){
+        while (!game.guessed()){
             int guess = readIn.getGuess();
-            guessed = game.checkGuess(guess);
+            game.checkGuess(guess);
+            game.printLastGuessResults();
         }
         game.printGuesses();
     }
