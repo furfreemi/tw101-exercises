@@ -31,6 +31,7 @@ public class Node {
         }
     }
 
+    // Get alphabetical list of names based on this as root node
     public List<String> names() {
         return namesBuilder(new LinkedList<String>());
     }

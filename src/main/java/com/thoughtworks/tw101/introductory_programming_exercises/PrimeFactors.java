@@ -17,7 +17,6 @@ public class PrimeFactors {
 
     // Check if a number is prime or not
     // Requires linear buildup of knownPrimes (least -> greater prime numbers)
-    // TODO: add in else condition to handle non-linear buildup- not required by current implementation as generate() functions linearly
     private static boolean isPrime(int n){
         if (n < 2) {
             return false;
@@ -38,53 +37,49 @@ public class PrimeFactors {
         return true;
     }
 
-    // Generate list of prime factors of n
-    private static List<Integer> generate(int n) {
-        LinkedList<Integer> primeFactors = new LinkedList<>();
-        int startPrimeSearch;
 
-        // If we've already built up our list of known primes
-        if (!knownPrimes.isEmpty()) {
-            int i = 0;
+    private static void appendFactorsFromKnownPrimes(int n, List<Integer> primeFactors){
+        int i = 0;
 
-            // Save all primes that are factors of n
-            // Only need to check up to n / 2 as larger numbers cannot be factors except for n itself
-            while (i < knownPrimes.size() && knownPrimes.get(i) <= n / 2) {
-                if (n % knownPrimes.get(i) == 0) {
-                    primeFactors.add(knownPrimes.get(i));
-                }
-                i++;
+        // Save all primes that are factors of n
+        // Only need to check up to n / 2 as larger numbers cannot be factors except for n itself
+        while (i < knownPrimes.size() && knownPrimes.get(i) <= n / 2) {
+            if (n % knownPrimes.get(i) == 0) {
+                primeFactors.add(knownPrimes.get(i));
             }
-
-            // If we've searched all possible factors and discovered factors (we know n itself isn't prime), we're done!
-            if (n / 2 < knownPrimes.get(knownPrimes.size() - 1) && !primeFactors.isEmpty()) {
-                return primeFactors;
-            }
-
-            // Otherwise, we need to keep looking for factors
-            startPrimeSearch = knownPrimes.get(knownPrimes.size() - 1) + 1;
-        } else {
-            // Base case: knownPrimes is totally empty
-            startPrimeSearch = 2;
+            i++;
         }
+    }
 
-        // Build up knownPrimes until we've found all possible factors
+    private static void buildUpKnownPrimes(int n){
+        // start at 2 if just beginning, otherwise number after last known prime
+        int startPrimeSearch = knownPrimes.isEmpty() ? 2 : knownPrimes.get(knownPrimes.size() - 1) + 1;
+
         for (int i = startPrimeSearch; i <= n / 2; i++) {
             if (isPrime(i)) {
-                if (n % i == 0) {
-                    primeFactors.add(i);
-                }
                 knownPrimes.add(i);
             }
         }
+    }
 
-        // If we haven't found any prime factors- is this number itself prime?
-        // NOTE: doesn't add n to knownPrimes as knownPrimes needs to be built sequentially upwards in order to function, don't want to accidentally skip any prime numbers
-        if (primeFactors.isEmpty()){
-            if (isPrime(n)){
-                primeFactors.add(n);
-            }
+
+    // Generate list of prime factors of n
+    private static List<Integer> generate(int n) {
+        LinkedList<Integer> primeFactors = new LinkedList<>();
+
+        // Build up knownPrimes until we've found all possible factors besides n itself
+        if (knownPrimes.isEmpty() || knownPrimes.get(knownPrimes.size() - 1) < n / 2){
+            buildUpKnownPrimes(n);
         }
+
+        // Get all the factors from the knownPrimes list
+        appendFactorsFromKnownPrimes(n, primeFactors);
+
+        // If we haven't found any prime factors- is n itself prime?
+        if (primeFactors.isEmpty() && isPrime(n)){
+            primeFactors.add(n);
+        }
+
         return primeFactors;
     }
 
