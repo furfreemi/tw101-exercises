@@ -67,6 +67,11 @@ public class PrimeFactors {
     private static List<Integer> generate(int n) {
         LinkedList<Integer> primeFactors = new LinkedList<>();
 
+        // flip negative numbers to be positive
+        if (n < 0){
+            n = n * -1;
+        }
+
         // Build up knownPrimes until we've found all possible factors besides n itself
         if (knownPrimes.isEmpty() || knownPrimes.get(knownPrimes.size() - 1) < n / 2){
             buildUpKnownPrimes(n);
@@ -88,6 +93,7 @@ public class PrimeFactors {
         List<Integer> primeFactors = generate(30);
         //primeFactors = generate(100);
         //primeFactors = generate(67); // check: make sure prime numbers return a list with just that number
+        //primeFactors = generate(1); // check: empty list
         for (int i : primeFactors){
             System.out.println(i);
         }
