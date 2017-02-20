@@ -7,6 +7,7 @@ package com.thoughtworks.tw101.exercises.exercise8;
 import com.thoughtworks.tw101.exercises.exercise7.RandomNumber;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GuessGame {
 
@@ -16,6 +17,15 @@ public class GuessGame {
 
     public GuessGame(RandomNumber rand){
         this.rand = rand;
+    }
+
+    public void playGame(){
+        InputParser readIn = new InputParser(new Scanner(System.in));
+        while (!guessed){
+            int guess = readIn.getGuess();
+            checkGuess(guess);
+            printLastGuessResults();
+        }
     }
 
 
@@ -48,11 +58,6 @@ public class GuessGame {
         for (int i = 0; i < guessList.size(); i++){
             System.out.println("Guess #" + (i + 1) + ": " + guessList.get(i));
         }
-    }
-
-
-    public boolean guessed(){
-        return guessed;
     }
 
 }

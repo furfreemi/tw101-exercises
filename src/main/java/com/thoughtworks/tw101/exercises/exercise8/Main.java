@@ -6,17 +6,11 @@ package com.thoughtworks.tw101.exercises.exercise8;
 
 import com.thoughtworks.tw101.exercises.exercise7.RandomNumber;
 
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         GuessGame game = new GuessGame(new RandomNumber());
-        InputParser readIn = new InputParser(new Scanner(System.in));
-        while (!game.guessed()){
-            int guess = readIn.getGuess();
-            game.checkGuess(guess);
-            game.printLastGuessResults();
-        }
+        game.playGame();
         game.printGuesses();
     }
 }
