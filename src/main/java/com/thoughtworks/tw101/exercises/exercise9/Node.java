@@ -29,6 +29,17 @@ public class Node {
         }
     }
 
+    public List<String> namesWithoutHelper() {
+        List<String> names = new LinkedList<>();
+        if (leftChild != null){
+            names = leftChild.namesWithoutHelper();
+        }
+        names.add(this.name);
+        if (rightChild != null){
+            names.addAll(rightChild.namesWithoutHelper());
+        }
+        return names;
+    }
 
     public List<String> names() {
         return namesBuilder(new LinkedList<String>());
