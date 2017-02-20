@@ -12,9 +12,7 @@ public class Node {
         this.name = name;
     }
 
-    // left child: alphabetically before this node
-    // right child: alphabetically matching or after this node
-    // If child nodes are already present, pass down in correct direction to append as lower child
+
     public void add(String nameOfNewNode) {
         if (nameOfNewNode.compareTo(name) < 0){
             if (leftChild == null){
@@ -31,12 +29,12 @@ public class Node {
         }
     }
 
-    // Get alphabetical list of names based on this as root node
+
     public List<String> names() {
         return namesBuilder(new LinkedList<String>());
     }
 
-    // Helper method for names(): pass around list while building it up
+
     private List<String> namesBuilder(List<String> list){
         //left - this - right order in order to maintain alphabetical
         if (leftChild != null){

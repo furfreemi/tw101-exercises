@@ -11,7 +11,7 @@ public class Library {
         this.printStream = printStream;
     }
 
-    // Print out books containing input book title fragment
+
     public void printBooksContaining(String partialBookTitle) {
         for (String book : books) {
             if (book.contains(partialBookTitle)) {

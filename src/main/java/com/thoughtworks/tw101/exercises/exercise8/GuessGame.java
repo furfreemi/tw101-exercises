@@ -18,7 +18,7 @@ public class GuessGame {
         this.rand = rand;
     }
 
-    // Maintain guess list and update game status
+
     public void checkGuess(int guess){
         guessList.add(guess);
         if (rand.compareTo(guess) == 0) {
@@ -26,7 +26,7 @@ public class GuessGame {
         }
     }
 
-    // Print out results of last guess
+
     public void printLastGuessResults(){
         if (!guessList.isEmpty()){
             int lastGuess = guessList.get(guessList.size() - 1);
@@ -42,7 +42,7 @@ public class GuessGame {
     }
 
 
-    // Print out all guesses
+
     public void printGuesses(){
         System.out.println("Your guess log:");
         for (int i = 0; i < guessList.size(); i++){

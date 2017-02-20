@@ -13,7 +13,7 @@ public class InputParser {
         this.input = input;
     }
 
-    // Uses scanner functions to check if valid guess was entered
+
     public int getGuess(){
         System.out.print("Enter a guess for the number: ");
         if (input.hasNextInt()) {

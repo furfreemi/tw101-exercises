@@ -12,18 +12,17 @@ import java.util.List;
 
 public class PrimeFactors {
 
-    // Maintain prime numbers known thus far: built up linearly
     private static ArrayList<Integer> knownPrimes = new ArrayList<>();
 
-    // Check if a number is prime or not
+
     // Requires linear buildup of knownPrimes (least -> greater prime numbers)
     private static boolean isPrime(int n){
         if (n < 2) {
             return false;
         }
-        // We only need to check up until the square root, as beyond the square root, any factor x must be a factor such that x * y = n, where y is less than the square root of n
+
         int squareRoot = (int)Math.sqrt(n);
-        // If knownPrimes is built up enough to determine if this number is prime or not
+
         if (!knownPrimes.isEmpty() && squareRoot <= knownPrimes.get(knownPrimes.size() - 1)) {
             int i = 0;
             while (knownPrimes.get(i) <= squareRoot) {
@@ -41,8 +40,6 @@ public class PrimeFactors {
     private static void appendFactorsFromKnownPrimes(int n, List<Integer> primeFactors){
         int i = 0;
 
-        // Save all primes that are factors of n
-        // Only need to check up to n / 2 as larger numbers cannot be factors except for n itself
         while (i < knownPrimes.size() && knownPrimes.get(i) <= n / 2) {
             if (n % knownPrimes.get(i) == 0) {
                 primeFactors.add(knownPrimes.get(i));
@@ -52,7 +49,6 @@ public class PrimeFactors {
     }
 
     private static void buildUpKnownPrimes(int n){
-        // start at 2 if just beginning, otherwise number after last known prime
         int startPrimeSearch = knownPrimes.isEmpty() ? 2 : knownPrimes.get(knownPrimes.size() - 1) + 1;
 
         for (int i = startPrimeSearch; i <= n / 2; i++) {
@@ -63,24 +59,19 @@ public class PrimeFactors {
     }
 
 
-    // Generate list of prime factors of n
     private static List<Integer> generate(int n) {
         LinkedList<Integer> primeFactors = new LinkedList<>();
 
-        // flip negative numbers to be positive
         if (n < 0){
             n = n * -1;
         }
 
-        // Build up knownPrimes until we've found all possible factors besides n itself
         if (knownPrimes.isEmpty() || knownPrimes.get(knownPrimes.size() - 1) < n / 2){
             buildUpKnownPrimes(n);
         }
 
-        // Get all the factors from the knownPrimes list
         appendFactorsFromKnownPrimes(n, primeFactors);
 
-        // If we haven't found any prime factors- is n itself prime?
         if (primeFactors.isEmpty() && isPrime(n)){
             primeFactors.add(n);
         }
@@ -98,8 +89,5 @@ public class PrimeFactors {
             System.out.println(i);
         }
 
-        //for (int i : knownPrimes){
-        //    System.out.println(i);
-        //}
     }
 }

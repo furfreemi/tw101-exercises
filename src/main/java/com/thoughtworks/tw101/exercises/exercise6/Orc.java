@@ -5,7 +5,6 @@ package com.thoughtworks.tw101.exercises.exercise6;
  */
 public class Orc implements Monster {
 
-    // Could pull out hitpoints and name into a constructor but it appears to be uniform based on specifications?
     private int hitpoints = 20;
 
     @Override
