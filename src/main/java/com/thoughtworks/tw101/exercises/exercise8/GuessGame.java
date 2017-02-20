@@ -7,7 +7,6 @@ package com.thoughtworks.tw101.exercises.exercise8;
 import com.thoughtworks.tw101.exercises.exercise7.RandomNumber;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class GuessGame {
 
@@ -19,8 +18,7 @@ public class GuessGame {
         this.rand = rand;
     }
 
-    public void playGame(){
-        InputParser readIn = new InputParser(new Scanner(System.in));
+    public void playGame(InputParser readIn){
         while (!guessed){
             int guess = readIn.getGuess();
             checkGuess(guess);
@@ -28,8 +26,15 @@ public class GuessGame {
         }
     }
 
+    public void printGuesses(){
+        System.out.println("Your guess log:");
+        for (int i = 0; i < guessList.size(); i++){
+            System.out.println("Guess #" + (i + 1) + ": " + guessList.get(i));
+        }
+    }
 
-    public void checkGuess(int guess){
+
+    private void checkGuess(int guess){
         guessList.add(guess);
         if (rand.compareTo(guess) == 0) {
             guessed = true;
@@ -37,7 +42,7 @@ public class GuessGame {
     }
 
 
-    public void printLastGuessResults(){
+    private void printLastGuessResults(){
         if (!guessList.isEmpty()){
             int lastGuess = guessList.get(guessList.size() - 1);
             int result = rand.compareTo(lastGuess);
@@ -53,11 +58,6 @@ public class GuessGame {
 
 
 
-    public void printGuesses(){
-        System.out.println("Your guess log:");
-        for (int i = 0; i < guessList.size(); i++){
-            System.out.println("Guess #" + (i + 1) + ": " + guessList.get(i));
-        }
-    }
+
 
 }
